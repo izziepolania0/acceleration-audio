@@ -4,49 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acceleration Audio | The global leader in accelerating music</title>
-
     <link rel="stylesheet" href="output.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        font-family: system-ui, sans-serif;
+        height: 100vh;
+        margin: 0;
+      }
+      h1 {
+        display: none;
+      }
+      #dynamicImage {
+        width: 80%;
+        max-width: 350px;
+        border-radius: 12px;
+        margin-top: 40px;
+      }
+      .song-info {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+      #progress {
+        width: 85%;
+        height: 6px;
+        background: #e5e5e5;
+        border-radius: 3px;
+        margin: 20px auto;
+        position: relative;
+      }
+      #custom-progress-bar {
+        height: 6px;
+        background: #000;
+        border-radius: 3px;
+      }
+      .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-top: 20px;
+      }
+      .controls button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .controls i {
+        width: 36px;
+        height: 36px;
+        stroke-width: 1.8;
+      }
+      #pauseButton i,
+      #playButton i {
+        width: 50px;
+        height: 50px;
+      }
+      audio {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <h1>Acceleration Audio</h1>
+    <img id="dynamicImage" src="/albumart/default.png" alt="Album Art" />
+    <div class="song-info">
+      <p id="songTitle">Song Title</p>
+    </div>
+    <div id="progress">
+      <div id="custom-progress-bar" class="w-0"></div>
+    </div>
+    <div id="song-info">
+      <div id="speedDisplay">Speed: 1.00x</div>
+    </div>
 
-    <i data-lucide="x"></i>
-    <i data-lucide="menu"></i>
-
-    <button id="playButton">
-      <i data-lucide="play" class="w-50 h-50"></i>
-    </button>
-
-    <a href="">
-      <i data-lucide="play" class="text-transparent fill-amber-600"></i>
-    </a>
-
-    <a href="">
-      <i data-lucide="play" class="text-amber-600 fill-transparent"></i>
-    </a>
-
-    <!-- <div class="icon-play"></div> -->
-    <button id="pauseButton">
-      <i data-lucide="pause" class="text-transparent fill-amber-600 w-50 h-60">
-      </i>
-    </button>
-
-    <button id="pauseButton2">
-      <i data-lucide="pause" class="text-amber-600 fill-transparent"> </i>
-    </button>
-
-    <p>
-      <progress id="progress" value="0" max="1" style="width:100%"></progress>
-
-      <div id="custom-progress" class="w-full h-8 bg-amber-100 trasition-all">
-        <div id="custom-progress-bar" class="w-0 h-8 bg-amber-500 z-10"></div>
-      </div>
-    </p>
-
+    <div class="controls">
+      <button id="backwardButton">
+        <i data-lucide="skip-back"></i>
+      </button>
+      <button id="playButton">
+        <i data-lucide="play"></i>
+      </button>
+      <button id="pauseButton">
+        <i data-lucide="pause"></i>
+      </button>
+      <button id="forwardButton">
+        <i data-lucide="skip-forward"></i>
+      </button>
+    </div>
     <audio src="" id="audioPlayer" controls></audio>
-
     <script src="main.js"></script>
-
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
